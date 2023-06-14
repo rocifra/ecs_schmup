@@ -1,0 +1,462 @@
+{
+	"actions": {},
+	"componentRegistry": {
+		"sb.ecs.components.Transform": {
+			"processPriority": 0,
+			"poolSize": 10000
+		},
+		"sb.ecs.components.PixiSprite": {
+			"processPriority": 1,
+			"poolSize": 10000
+		}
+	},
+	"blueprints": {
+		"HotRod": {
+			"tags": [
+				"friendly",
+				"hero",
+				"x",
+				"y"
+			],
+			"components": {
+				"Transform": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"TransformInputController": {
+					"acceleration": 3,
+					"friction": 0.9,
+					"maxSpeed": 20,
+					"moveLeftStateControlSignal": "move-left",
+					"moveRightStateControlSignal": "move-right",
+					"moveUpStateControlSignal": "move-up",
+					"moveDownStateControlSignal": "move-down"
+				},
+				"PixiSprite": {
+					"textureID": "hot_rod",
+					"anchorX": 0.5,
+					"anchorY": 0.5,
+					"pivotX": 0,
+					"pivotY": 0
+				},
+				"EntityEmitter": {
+					"numEntitiesEmittedPerTick": 1,
+					"emitterX": 20,
+					"emitterY": 20,
+					"rotationVariance": 0.03,
+					"xVariance": 20,
+					"yVariance": 10,
+					"interval": 10,
+					"blueprintID": "BBullet",
+					"paused": true
+				},
+				"EntityEmitterInputController": {
+					"stateControlSignalName": "player-fire"
+				},
+				"Children": {
+					"childBlueprints": [
+						{
+							"blueprintID": "MissileLauncher",
+							"pivotX": 30,
+							"pivotY": 80,
+							"pivotRotation": 0.5,
+							"rotationLock": false
+						},
+						{
+							"blueprintID": "MissileLauncher2",
+							"pivotX": -130,
+							"pivotY": -50,
+							"pivotRotation": 0.5,
+							"rotationLock": false
+						}
+					]
+				}
+			}
+		},
+		"MissileLauncher": {
+			"tags": [
+				"hero"
+			],
+			"components": {
+				"Transform": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"PixiSprite": {
+					"textureID": "missile_launcher",
+					"anchorX": 0.5,
+					"anchorY": 0.5,
+					"pivotX": 0,
+					"pivotY": 0
+				},
+				"EntityEmitter": {
+					"numEntitiesEmittedPerTick": 1,
+					"emitterX": 20,
+					"emitterY": 20,
+					"rotationVariance": 0.03,
+					"xVariance": 20,
+					"yVariance": 10,
+					"interval": 100,
+					"blueprintID": "BMissile",
+					"paused": true
+				},
+				"EntityEmitterInputController": {
+					"stateControlSignalName": "player-fire"
+				}
+			}
+		},
+		"MissileLauncher2": {
+			"tags": [
+				"hero"
+			],
+			"components": {
+				"Transform": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"PixiSprite": {
+					"textureID": "missile_launcher",
+					"anchorX": 0.5,
+					"anchorY": 0.5,
+					"pivotX": 0,
+					"pivotY": 0
+				},
+				"EntityEmitter": {
+					"numEntitiesEmittedPerTick": 15,
+					"emitterX": 20,
+					"emitterY": 20,
+					"rotationVariance": 0.03,
+					"xVariance": 20,
+					"yVariance": 10,
+					"interval": 70,
+					"blueprintID": "BBullet",
+					"paused": true
+				},
+				"Target": {
+					"targetableTag": "bad_finger"
+				},
+				"AngularTargetTracking": {
+					"angularVelocity": 0.1
+				}
+			}
+		},
+		"GodFinger": {
+			"tags": [
+				"god"
+			],
+			"components": {
+				"Transform": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"EntityEmitter": {
+					"numEntitiesEmittedPerTick": 70,
+					"emitterX": 20,
+					"emitterY": 20,
+					"rotationVariance": 0.2,
+					"xVariance": 200,
+					"yVariance": 150,
+					"interval": 50,
+					"blueprintID": "BBullet",
+					"paused": true
+				}
+			}
+		},
+		"BMissile": {
+			"tags": [
+				"projectile",
+				"super_rocket",
+				"enemy_bullet"
+			],
+			"components": {
+				"Transform": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"PixiSprite": {
+					"textureID": "missile_bullet",
+					"anchorX": 0.5,
+					"anchorY": 0.5,
+					"pivotX": 0,
+					"pivotY": 0
+				},
+				"MaxAge": {
+					"maxAge": 20000
+				},
+				"VectorMotion": {
+					"speed": 0,
+					"maxSpeed": 20,
+					"acceleration": 0.4,
+					"friction": 0.9999
+				},
+				"Target": {
+					"targetableTag": "bad_finger"
+				},
+				"AngularTargetTracking": {
+					"angularVelocity": 0.15,
+					"courseCorrection": 0.002
+				},
+				"DeathSpawn": {
+					"entityBlueprint": "Explosion"
+				},
+				"RocketLaunchSequence": {
+					"launchDuration": 400,
+					"acceleration": 0.2,
+					"launchDirection": 1.57,
+					"launchEndFriction": 0.8
+				},
+				"Children": {
+					"childBlueprints": [
+						{
+							"blueprintID": "BMissileTrailFX",
+							"pivotX": -10,
+							"pivotY": 0,
+							"pivotRotation": 0,
+							"rotationLock": true
+						}
+					]
+				}
+			}
+		},
+		"BMissileTrailFX": {
+			"components": {
+				"Transform": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"RopeTrail": {},
+				"MaxAge": {
+					"maxAge": 21000
+				}
+			}
+		},
+		"BBullet": {
+			"tags": [
+				"projectile",
+				"super_rocket",
+				"enemy_bullet"
+			],
+			"components": {
+				"Transform": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"PixiSprite": {
+					"textureID": "bullet",
+					"anchorX": 0.5,
+					"anchorY": 0.5,
+					"pivotX": 0,
+					"pivotY": 0
+				},
+				"MaxAge": {
+					"maxAge": 3000
+				},
+				"VectorMotion": {
+					"speed": 35,
+					"maxSpeed": 35,
+					"acceleration": 0,
+					"friction": 1
+				}
+			}
+		},
+		"Explosion": {
+			"tags": [
+				"animation"
+			],
+			"components": {
+				"Transform": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"MaxAge": {
+					"maxAge": 500
+				},
+				"ParticleSystem": {
+					"configuration": "b"
+				}
+			}
+		}
+	},
+	"blueprints_dev": {
+		"Kolector_DESKTOP_UI": {
+			"tags": [
+				"friendly",
+				"hero",
+				"x",
+				"y"
+			],
+			"components": {
+				"GridContainer": {
+					"cssClass": "type_custom_css_class_here"
+				},
+				"Transform": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"TransformInputController": {
+					"x": 0,
+					"y": 0,
+					"rotation": 0
+				},
+				"PixiSprite": {
+					"textureID": "hot_rod",
+					"anchorX": 0.5,
+					"anchorY": 0.5,
+					"pivotX": 0,
+					"pivotY": 0
+				},
+				"KeyboardPositionController": {
+					"acceleration": 2,
+					"friction": 0.9
+				},
+				"EntityEmitter": {
+					"numEntitiesEmittedPerTick": 2,
+					"emitterX": 20,
+					"emitterY": 20,
+					"rotationVariance": 0.01,
+					"xVariance": 10,
+					"yVariance": 10,
+					"interval": 80
+				}
+			}
+		}
+	},
+	"HotRodold": {
+		"tags": [
+			"friendly",
+			"hero",
+			"x",
+			"y"
+		],
+		"components": {
+			"Transform": {
+				"x": 0,
+				"y": 0,
+				"rotation": 0
+			},
+			"TransformInputController": {
+				"x": 0,
+				"y": 0,
+				"rotation": 0
+			},
+			"PixiSprite": {
+				"textureID": "hot_rod",
+				"anchorX": 0.5,
+				"anchorY": 0.5,
+				"pivotX": 0,
+				"pivotY": 0
+			},
+			"KeyboardPositionController": {
+				"acceleration": 2,
+				"friction": 0.9
+			},
+			"EntityEmitter": {
+				"numEntitiesEmittedPerTick": 2,
+				"emitterX": 20,
+				"emitterY": 20,
+				"rotationVariance": 0.01,
+				"xVariance": 10,
+				"yVariance": 10,
+				"interval": 80
+			}
+		}
+	},
+	"HotRod": {
+		"tags": [
+			"friendly",
+			"hero",
+			"x",
+			"y"
+		],
+		"components": {
+			"Transform": {
+				"x": 0,
+				"y": 0,
+				"rotation": 0
+			},
+			"TransformInputController": {
+				"acceleration": 3,
+				"friction": 0.9,
+				"maxSpeed": 20,
+				"moveLeftStateControlSignal": "move-left",
+				"moveRightStateControlSignal": "move-right",
+				"moveUpStateControlSignal": "move-up",
+				"moveDownStateControlSignal": "move-down"
+			},
+			"PixiSprite": {
+				"textureID": "hot_rod",
+				"anchorX": 0.5,
+				"anchorY": 0.5,
+				"pivotX": 0,
+				"pivotY": 0
+			},
+			"EntityEmitter": {
+				"numEntitiesEmittedPerTick": 1,
+				"emitterX": 20,
+				"emitterY": 20,
+				"rotationVariance": 0.03,
+				"xVariance": 20,
+				"yVariance": 10,
+				"interval": 70,
+				"blueprintID": "BBullet",
+				"paused": true
+			},
+			"EntityEmitterInputController": {
+				"stateControlSignalName": "player-fire"
+			},
+			"Children": {
+				"children": [
+					"GodFinger"
+				]
+			}
+		}
+	},
+	"MissileLauncher": {
+		"tags": [
+			"hero"
+		],
+		"components": {
+			"Transform": {
+				"x": 0,
+				"y": 0,
+				"rotation": 0
+			},
+			"PixiSprite": {
+				"textureID": "missile_launcher",
+				"anchorX": 0.5,
+				"anchorY": 0.5,
+				"pivotX": 0,
+				"pivotY": 0
+			},
+			"EntityEmitter": {
+				"numEntitiesEmittedPerTick": 1,
+				"emitterX": 20,
+				"emitterY": 20,
+				"rotationVariance": 0.03,
+				"xVariance": 20,
+				"yVariance": 10,
+				"interval": 70,
+				"blueprintID": "BMissile",
+				"paused": true
+			},
+			"EntityEmitterInputController": {
+				"stateControlSignalName": "player-fire"
+			},
+			"ParentEntity": {
+				"parent": null
+			},
+			"ParentTransform": {
+				"parent": null
+			}
+		}
+	}
+}

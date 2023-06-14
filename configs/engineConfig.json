@@ -1,0 +1,69 @@
+﻿{
+    "forceMobile": false,
+    "debugConfig": {
+        "debugMode": true
+    },
+    "preloadAssets": {
+        "background_blue": "../core_bundles/assets/adservio/images/preload/background_blue.jpg",
+        "progress_bar_bg": "../core_bundles/assets/adservio/images/preload/progress_bar_bg.png",
+        "progress_bar_fill": "../core_bundles/assets/adservio/images/preload/progress_bar_fill.png"
+    },
+    "runtimeAssets": {
+        "errorTexture": "../core_bundles/assets/adservio/images/runtime/errorTexture.jpg",
+        "play_icon": "../core_bundles/assets/adservio/images/runtime/icons/play_icon.png",
+        "restart_icon": "../core_bundles/assets/adservio/images/runtime/icons/restart_icon.png",
+        "help_icon": "../core_bundles/assets/adservio/images/runtime/icons/help_icon.png",
+        "pause_icon": "../core_bundles/assets/adservio/images/runtime/icons/pause_icon.png",
+        "plus_icon": "../core_bundles/assets/adservio/images/runtime/icons/plus_icon.png",
+        "sound_icon_off": "../core_bundles/assets/adservio/images/runtime/icons/sound_icon_off.png",
+        "sound_icon_on": "../core_bundles/assets/adservio/images/runtime/icons/sound_icon_on.png",
+        "arrow_icon_white_sm": "../core_bundles/assets/adservio/images/runtime/icons/arrow_icon_white_sm.png",
+        "retry_icon": "../core_bundles/assets/adservio/images/runtime/icons/retry_icon.png",
+        "retry_icon_white_sm": "../core_bundles/assets/adservio/images/runtime/icons/retry_icon_white_sm.png",
+        "9slice_stats_module_bg": "../core_bundles/assets/adservio/images/runtime/slice9Textures/slice9_stats_module_bg.png",
+        "slice9_bg1": "../core_bundles/assets/adservio/images/runtime/slice9Textures/slice9_bg1.png",
+        "slice9_bg2": "../core_bundles/assets/adservio/images/runtime/slice9Textures/slice9_bg2.png",
+        "slice9_button_bg2": "../core_bundles/assets/adservio/images/runtime/slice9Textures/slice9_button_bg2.png",
+        "modal_timer_clock_bg": "../core_bundles/assets/adservio/images/runtime/modal_timer_clock_bg.png",
+        "chime": "../core_bundles/assets/adservio/sounds/chime.mp3",
+        "correct_feedback": "../core_bundles/assets/adservio/sounds/correct_feedback.mp3",
+        "wrong_feedback": "../core_bundles/assets/adservio/sounds/wrong_feedback.mp3"
+    },
+    "rendererConfig": {
+        "antialias": false,
+        "autoResize": false,
+        "backgroundColor": "0x5E7BB1",
+        "roundPixels": false
+    },
+    "uiOverlay": {
+        "menuScreenID": "MENU_SCREEN",
+        "statsModules": [
+            {
+                "id": "score",
+                "description": "SCORE",
+                "width": 120,
+                "height": 35,
+                "fontWeight": "bold",
+                "textColor": "0x183244"
+            },
+            {
+                "id": "time",
+                "description": "TIME",
+                "width": 100,
+                "height": 35,
+                "fontWeight": "bold",
+                "textColor": "0x183244"
+            }
+        ]
+    },
+    "gameAssets": {
+        "hot_rod": "resources/images/hot_rod_01.png",
+        "bullet": "resources/images/bullet.png",
+        "missile_bullet": "resources/images/missile_bullet.png",
+        "particle": "resources/images/particle.png",
+        "trail": "resources/images/trail.png",
+        "trail2": "resources/images/trail2.png"
+    },
+    "gameConfig": {},
+    "gameStrings": {}
+}
