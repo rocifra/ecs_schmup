@@ -4,9 +4,9 @@
         "debugMode": true
     },
     "preloadAssets": {
-        "background_blue": "../core_bundles/assets/adservio/images/preload/background_blue.jpg",
-        "progress_bar_bg": "../core_bundles/assets/adservio/images/preload/progress_bar_bg.png",
-        "progress_bar_fill": "../core_bundles/assets/adservio/images/preload/progress_bar_fill.png"
+        "background_blue": "/core_bundles/assets/adservio/images/preload/background_blue.jpg",
+        "progress_bar_bg": "/core_bundles/assets/adservio/images/preload/progress_bar_bg.png",
+        "progress_bar_fill": "/core_bundles/assets/adservio/images/preload/progress_bar_fill.png"
     },
     "runtimeAssets": {
         "errorTexture": "../core_bundles/assets/adservio/images/runtime/errorTexture.jpg",
