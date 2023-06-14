@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "module": "system",
+      "target": "ES6",
+      "lib": ["ES6","DOM"],      
+      "sourceMap": true,     
+      "watch": true
+    },
+    "include": [
+      "js/**/*"     
+    ],
+    "exclude": [
+        "node_modules",
+        "#design_src",
+        "#simple-html-server"       
+    ]
+  }
